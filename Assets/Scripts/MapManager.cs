@@ -9,6 +9,10 @@ public class MapManager : MonoBehaviour
     public Tilemap mainTilemap;
 
 
+    public Sprite[] tileSprite;
+
+    public TextAsset Data;
+
     public Dictionary<TileBase,Cell> cellMap;
 
 
@@ -22,6 +26,33 @@ public class MapManager : MonoBehaviour
 
     void Start ()
     {
+        readData();
+    }
+
+
+
+
+    public void readData()
+    {
+        string[] lines = Data.text.Split('\n');
+
+        for (int i = 0; i < lines.Length;i++)
+        {
+
+            string[] d = lines[lines.Length-i-1].Split(',');
+            for (int j = 0; j < d.Length;j++)
+            {
+                Vector3Int _pos = new Vector3Int(j, i, 0);
+                string d_v = d[j];
+
+                Cell C = Cell.GetDefault(new Vector2Int(_pos.x, _pos.y));
+                C.sprite = tileSprite[int.Parse(d_v)];
+                setCell(V2_V3(C.pos), C);
+
+                getCell(_pos).isPassable = (d_v == "1");
+            }
+        }
+
 
     }
 
@@ -70,5 +101,15 @@ public class MapManager : MonoBehaviour
         return _cell;
     }
 
+
+    static Vector3Int V2_V3(Vector2Int V2)
+    {
+        return new Vector3Int(V2.x, V2.y, 0);
+    }
+
+    static Vector2Int V3_V2(Vector3Int V3)
+    {
+        return new Vector2Int(V3.x, V3.y);
+    }
 
 }
