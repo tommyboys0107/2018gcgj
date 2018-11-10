@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
 
+    static public GameManager instance;
 
-	void Start ()
+    public ShopManager shopManager;
+    public MapManager mapManager;
+    public CharManager charManager;
+
+
+	void Awake ()
     {
+        instance = this;
+
         Enter();
 
 
     }
 
-
-
-
     void Enter()
     {
 
     }
+
 }
