@@ -11,17 +11,16 @@ public class CharManager : MonoBehaviour
 
     public Vector2Int pos;
 
-	void Start ()
-    {
-	}
 
 
     bool charMoveTo(int _x,int _y)
     {
-        mainChar.transform.position = GameManager.instance.mapManager.cellToWorld(new Vector3Int(_x, _y, 0));
+        //mainChar.transform.position = GameManager.instance.mapManager.cellToWorld(new Vector3Int(_x, _y, 0));
 
+        pos = new Vector2Int(_x, _y);
 
         return true;
+
 
     }
 

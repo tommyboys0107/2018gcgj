@@ -614,6 +614,8 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 46
     m_Data: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 46
     m_Data:
@@ -863,6 +865,7 @@ MonoBehaviour:
   shopManager: {fileID: 489631203}
   mapManager: {fileID: 1316755910}
   charManager: {fileID: 474670645}
+  sp: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1316755908
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +930,7 @@ Grid:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629434407}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 0.16, y: 0.16, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
