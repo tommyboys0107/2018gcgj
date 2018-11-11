@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         shopManager.coin = 100;
 
-        Invoke("Enter",3F);
+        Enter();
 
 
     }

@@ -12,6 +12,8 @@ public class UIDelegate : MonoBehaviour
     public delegate void MoveView(Vector2 _delta);                              //移動視野
     public delegate bool BuyItem(int _itemIndex);                               //買道具
     public delegate void SetItemInCell(Vector3 _worldPosition);                 //放置道具
+    public delegate void Win();
+    public delegate void Lose();
 
 
     public EnterGame enterGame;
@@ -20,6 +22,8 @@ public class UIDelegate : MonoBehaviour
     public MoveView moveView;
     public BuyItem buyItem;
     public SetItemInCell setItemInCell;
+    public Win win;
+    public Lose lose;
 
 
     public void Init()
@@ -42,6 +46,9 @@ public class UIDelegate : MonoBehaviour
         setItemInCell = Log;
         setItemInCell += GameManager.instance.shopManager.setItemInCell_World;
 
+        lose += delegate { Debug.Log("LOSE"); };
+
+        win += delegate { Debug.Log("WIN"); };
     }
 
 void HandleSetItemInCell(Vector3 _worldPosition)

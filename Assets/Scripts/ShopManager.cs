@@ -74,7 +74,7 @@ public class ShopManager : MonoBehaviour
 
 
         int spendCoin = isPlaying ? itemList[_itemIndex].staticCost : itemList[_itemIndex].DynamicCost;
-        if (coin > spendCoin)    //判斷金幣是否足夠
+        if (coin >= spendCoin)    //判斷金幣是否足夠
         {
             coin -= spendCoin;
             HoldItem = itemList[_itemIndex];

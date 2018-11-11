@@ -11,23 +11,24 @@ public class CharManager : MonoBehaviour
     SpriteRenderer charSpRender;
     public Move move;
 
+
+    int _HP = 10;
+    public int HP
+    {
+        get { return _HP; }
+        set
+        {
+            UIMainCon.SetHP(value);
+            _HP = value;
+        }
+    }
+
+
     public Sprite[] charFaceSp;
 
     [Header("攝影機跟隨的速度")]
     public float cameraFollow = 0.5F;
 
-
-    int _leaveTime = 0;
-    public int leaveTime
-    {
-        get { return _leaveTime; }
-        set 
-        {
-            if (value == 0) GameManager.instance.timeUp();
-            _leaveTime = value;
-        }
-
-    }
 
     public Vector2Int pos;
 
