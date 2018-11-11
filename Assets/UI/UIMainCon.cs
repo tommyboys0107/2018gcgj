@@ -14,6 +14,8 @@ public class UIMainCon : MonoBehaviour {
 		public UILabel HPLabel;
 		public UILabel GPLabel;
 		public UIEventListener RestButt;
+		public UIEndCon UIGameOver;
+		public UIEndCon UIYouWin;
 	}
 	public _UI UI;
 
@@ -23,6 +25,12 @@ public class UIMainCon : MonoBehaviour {
 
 	void Start () {
 		UI.RestButt.onClick += (go) => {
+			UIDelegate.instance.restart();
+		};
+		UI.UIGameOver.UI.RButt.onClick += (go) => {
+			UIDelegate.instance.restart();
+		};
+		UI.UIYouWin.UI.RButt.onClick += (go) => {
 			UIDelegate.instance.restart();
 		};
 	}

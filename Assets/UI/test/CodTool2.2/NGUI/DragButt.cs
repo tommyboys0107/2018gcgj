@@ -51,6 +51,7 @@ public class DragButt : UIEventListener {//會抓到按下與放開的座標（�
 			ToCam = Camera.main;
 		}
 		onPress += (go, state) => {
+			if (Open == state) return;
 			Open = state;
 			if (state) {
 				StartV2 = GetV2 (Input.mousePosition);

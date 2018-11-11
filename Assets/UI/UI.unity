@@ -275,7 +275,6 @@ GameObject:
   - component: {fileID: 251192488}
   - component: {fileID: 251192487}
   - component: {fileID: 251192489}
-  - component: {fileID: 251192490}
   m_Layer: 5
   m_Name: RButt
   m_TagString: Untagged
@@ -392,23 +391,6 @@ MonoBehaviour:
   Sizes:
   - 1.1
   - 1
---- !u!114 &251192490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 251192485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d68b8aeedf04e069d39f2940d15b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsActiveCollider: 1
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &265291322
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,8 +726,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456252763}
-  - component: {fileID: 456252764}
   - component: {fileID: 456252765}
+  - component: {fileID: 456252764}
   m_Layer: 5
   m_Name: Main
   m_TagString: Untagged
@@ -841,6 +823,8 @@ MonoBehaviour:
     HPLabel: {fileID: 1827874966}
     GPLabel: {fileID: 1729059081}
     RestButt: {fileID: 251192489}
+    UIGameOver: {fileID: 1632074451}
+    UIYouWin: {fileID: 986157987}
 --- !u!1 &514499369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,18 +992,7 @@ MonoBehaviour:
   IsMove: 0
   StartEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1095185710}
-        m_MethodName: ButtonDragStart
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 514499369}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OpenEvent:
@@ -1386,8 +1359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scalingStyle: 0
-  manualWidth: 1280
-  manualHeight: 720
+  manualWidth: 1536
+  manualHeight: 1536
   minimumHeight: 320
   maximumHeight: 1536
   fitWidth: 0
@@ -1603,6 +1576,7 @@ GameObject:
   - component: {fileID: 986157984}
   - component: {fileID: 986157985}
   - component: {fileID: 986157986}
+  - component: {fileID: 986157987}
   m_Layer: 5
   m_Name: YouWin
   m_TagString: Untagged
@@ -1723,6 +1697,20 @@ MonoBehaviour:
   callWhenFinished: 
   from: 0
   to: 1
+--- !u!114 &986157987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 986157983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4cac1c92b584521b3ad1dbca4a02b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI:
+    RButt: {fileID: 1599836295}
+    Tween: {fileID: 986157986}
 --- !u!1 &992725039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,18 +1930,7 @@ MonoBehaviour:
   IsMove: 0
   StartEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1095185710}
-        m_MethodName: ButtonDragStart
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1094277383}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OpenEvent:
@@ -2235,18 +2212,7 @@ MonoBehaviour:
   IsMove: 0
   StartEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1095185710}
-        m_MethodName: ButtonDragStart
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1258119696}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OpenEvent:
@@ -2437,6 +2403,7 @@ GameObject:
   - component: {fileID: 1632074448}
   - component: {fileID: 1632074449}
   - component: {fileID: 1632074450}
+  - component: {fileID: 1632074451}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -2557,6 +2524,20 @@ MonoBehaviour:
   callWhenFinished: 
   from: 0
   to: 1
+--- !u!114 &1632074451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632074447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4cac1c92b584521b3ad1dbca4a02b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI:
+    RButt: {fileID: 265291326}
+    Tween: {fileID: 1632074450}
 --- !u!1 &1720230421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3303,8 +3284,8 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 0.6784314}
   mPivot: 4
-  mWidth: 1395
-  mHeight: 2480
+  mWidth: 279
+  mHeight: 496
   mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
