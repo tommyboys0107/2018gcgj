@@ -13,11 +13,18 @@ public class UIMainCon : MonoBehaviour {
 		public UIStoreCon UIStore;
 		public UILabel HPLabel;
 		public UILabel GPLabel;
+		public UIEventListener RestButt;
 	}
 	public _UI UI;
 
 	void Awake () {
 		_ = this;
+	}
+
+	void Start () {
+		UI.RestButt.onClick += (go) => {
+			UIDelegate.instance.restart();
+		};
 	}
 
 	static public void SetHP (int value) {

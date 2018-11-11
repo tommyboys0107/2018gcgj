@@ -9,8 +9,6 @@ public class UIStoreCon : ObjArray {
 		for (int i = 0; i < AllObj.Length; i++) {
 				UIMainCon._.UI.UIStore.GetObjT <DragButt> (i).EndDel += (V3) => {
 				print ("在場地x=" + V3.x + "  y=" + V3.y + "放開");
-				GameObject aaaa = GameObject.Find ("aaaa");
-				aaaa.transform.position = V3;
 			};
 		}
 	}
@@ -28,7 +26,6 @@ public class UIStoreCon : ObjArray {
 	}
 	public void ButtonDragEnd (GameObject Go) {
 		_Butt.gameObject.SetActive (false);
-		Vector2 EndV2 = Go.GetComponent <DragButt> ().EndV2;
 	}
 
 	[ContextMenu ("test")]
