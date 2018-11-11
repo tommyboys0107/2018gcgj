@@ -18,6 +18,7 @@ public class UIMainCon : MonoBehaviour {
 		public DragButt MoveViewButt;
 		public UIEndCon UIGameOver;
 		public UIEndCon UIYouWin;
+		public ObjArray OtherButts;
 	}
 	public _UI UI;
 
@@ -35,12 +36,25 @@ public class UIMainCon : MonoBehaviour {
             UIDelegate.instance.restart();
         };
 		UI.GoPlayButt.onClick += (go) => {
+			OnOffMove (true);
 			UIDelegate.instance.goPlay ();
 		};
 		UI.MoveViewButt.OpenDel += (V3) => {
 			UIDelegate.instance.moveView (UI.MoveViewButt.DragV2);
 		};
+		
     }
+
+	void Start () {
+		if (UIDelegate.instance == null) return;
+
+		UIDelegate.instance.lose += () => {
+			GameOver ();
+		};
+		UIDelegate.instance.win += () => {
+			YouWin ();
+		};
+	}
 
 	static public void SetHP (int value) {
 		_.UI.HPLabel.text = value.ToString ();
@@ -57,7 +71,8 @@ public class UIMainCon : MonoBehaviour {
 	static public void YouWin () {
 		_.UI.UIYouWin.Open ();
 	}
-	static public void OnOffMoveViewButt (bool b) {
-		_.UI.MoveViewButt.gameObject.SetActive (b);
+	static public void OnOffMove (bool b) {
+		_.UI.MoveViewButt.gameObject.SetActive (!b);
+		_.UI.OtherButts.OnOnlyObjs (b ? 1 : 0);
 	}
 }
