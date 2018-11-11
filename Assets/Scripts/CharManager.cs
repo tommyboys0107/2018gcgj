@@ -54,6 +54,15 @@ public class CharManager : MonoBehaviour
     private void Update()
     {
         CameraFollowChar();
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            HP += 10;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            HP -= 10;
+        }
     }
 
 

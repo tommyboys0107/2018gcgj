@@ -53,6 +53,18 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            coin += 10;
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            coin -= 10;
+        }
+    }
+
 
     void setUICost(bool isStatic)
     {
