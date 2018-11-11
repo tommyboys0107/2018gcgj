@@ -26,6 +26,7 @@ public class UIStoreCon : ObjArray {
 				}
 			};
 			UIMainCon._.UI.UIStore.GetObjT <DragButt> (i).EndDel += (V3) => {
+				UIDelegate.instance.setItemInCell (V3);
 				print ("在場地x=" + V3.x + "  y=" + V3.y + "放開");
 			};
 		}

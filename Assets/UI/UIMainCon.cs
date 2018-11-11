@@ -13,7 +13,9 @@ public class UIMainCon : MonoBehaviour {
 		public UIStoreCon UIStore;
 		public UILabel HPLabel;
 		public UILabel GPLabel;
+		public UIEventListener GoPlayButt;
 		public UIEventListener RestButt;
+		public DragButt MoveViewButt;
 		public UIEndCon UIGameOver;
 		public UIEndCon UIYouWin;
 	}
@@ -32,6 +34,12 @@ public class UIMainCon : MonoBehaviour {
         UI.UIYouWin.UI.RButt.onClick += (go) => {
             UIDelegate.instance.restart();
         };
+		UI.GoPlayButt.onClick += (go) => {
+			UIDelegate.instance.goPlay ();
+		};
+		UI.MoveViewButt.OpenDel += (V3) => {
+			UIDelegate.instance.moveView (UI.MoveViewButt.DragV2);
+		};
     }
 
 	static public void SetHP (int value) {
@@ -45,5 +53,11 @@ public class UIMainCon : MonoBehaviour {
 	}
 	static public void GameOver () {
 		_.UI.UIGameOver.Open ();
+	}
+	static public void YouWin () {
+		_.UI.UIYouWin.Open ();
+	}
+	static public void OnOffMoveViewButt (bool b) {
+		_.UI.MoveViewButt.gameObject.SetActive (b);
 	}
 }

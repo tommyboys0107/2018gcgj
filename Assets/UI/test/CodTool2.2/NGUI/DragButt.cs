@@ -94,4 +94,8 @@ public class DragButt : UIEventListener {//會抓到按下與放開的座標（�
 	public Vector2 GetULoacalV2 (Vector2 V2) {
 		return V2 * ToCam.transform.lossyScale.x;
 	}
+
+	public void Print (string Text) {
+		print (Text);
+	}
 }
