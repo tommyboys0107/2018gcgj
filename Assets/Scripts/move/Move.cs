@@ -17,17 +17,6 @@ public class Move : MonoBehaviour
 
     public void Check () {
 
-        if (GameManager.instance.charManager.HP > 0)
-        {
-            GameManager.instance.charManager.HP--;
-        }
-        else
-        {
-            GameManager.instance.uIDelegate.lose();
-            return;
-        }
-
-
         Vector2Int V2 = GameManager.instance.charManager.pos;
         int k = 1;
         Vector2Int[] V2_ARROW = new Vector2Int[]{
@@ -55,11 +44,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        if(CanPassList.Count == 0)  //若遇到死路（無路可走），就加入原本走的路，使其回頭
-        {
-            CanPassList.Add(lastPos);
-        }
-
+        FirstList = new List<Vector2Int>();
         for (; k < 11;k++)
         {
             for (int j = 0; j < CanPassList.Count;j++)
@@ -72,13 +57,24 @@ public class Move : MonoBehaviour
                     {
                         FirstList.Add(CanPassList[j]);
                     }
+                    else if(D.itemState.type == 1)
+                    {
+                        FirstList.Remove(CanPassList[j]);
+                        CanPassList.Remove(CanPassList[j]);
+                    }
+
                 }
             }
             if (FirstList.Count != 0) break;
         }
 
         Vector2Int Before = targetPos;
-        
+
+        if (CanPassList.Count == 0)  //若遇到死路（無路可走），就加入原本走的路，使其回頭
+        {
+            CanPassList.Add(lastPos);
+        }
+
 
         if (FirstList.Count != 0)
         {
@@ -98,7 +94,6 @@ public class Move : MonoBehaviour
 
         GameManager.instance.charManager.ChangeCharFace(GetFace(Before, After));
         GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);  //
-        clearItemSp(Before);  //清除原本格子的物品
 
 
     }
@@ -106,12 +101,7 @@ public class Move : MonoBehaviour
 
     public void clearItemSp(Vector2Int _pos)
     {
-        Cell C = GameManager.instance.mapManager.getCell(_pos);
 
-        if (C.itemState != null)
-        {
-            GameManager.instance.mapManager.freshCellItem(_pos, null);  //經過有物品的就砍掉
-        }
     }
 
     public int GetFace(Vector2Int Before,Vector2Int After)
