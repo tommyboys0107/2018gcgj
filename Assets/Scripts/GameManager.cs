@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject UIPrefab;
 
+    public Camera mainCamera;
+
 
     public Sprite sp;
 
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
 
         uIMainCon = FindObjectOfType(typeof(UIMainCon)) as UIMainCon;
 
-
+        mapManager.Init();
         uIMainCon.Init();
         uIDelegate.Init();
         shopManager.Init();
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     void Enter()
     {
+
+        //設定起始點
         mapManager.setCell(new Vector3Int(3, 0, 1), mapManager.setCellSprite(Cell.GetDefault(new Vector2Int(3, 0)), sp));
 
 

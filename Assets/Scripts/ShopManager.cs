@@ -39,15 +39,17 @@ public class ShopManager : MonoBehaviour
         修改金錢顯示 UIMainCon.SetGP(int);
         修改商品價格顯示 UIMainCon.SetPrice(int 編號, int 價格)
         */
-        Item I = new Item();
-        I.type = 0;
-        I.staticCost = 10;
-        I.DynamicCost = 20;
+        Item Item01 = new Item();
+        Item01.type = 0;
+        Item01.staticCost = 10;
+        Item01.DynamicCost = 20;
 
-        itemList = new List<Item>() { I, I, I, I, I };
+        Item Item02 = new Item();
+        Item02.type = 1;
+        Item02.staticCost = 10;
+        Item02.DynamicCost = 20;
 
-
-
+        itemList = new List<Item>() { Item01, Item02 };
 
     }
 
@@ -85,17 +87,23 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void setItemInCell(Vector2Int _cellPos)
+    public void setItemInCell_2(Vector2Int _cellPos)
     {
         GameManager.instance.mapManager.getCell(_cellPos).itemState = HoldItem;
+
+        GameManager.instance.mapManager.freshCellItem(_cellPos, HoldItem);  //刷新上方的圖
+
         HoldItem = null;
+
+
+
         Debug.LogFormat("set Item in Cell({0},{1})", _cellPos.x, _cellPos.y);
     }
     public void setItemInCell(Vector3Int _cellPos)
     {
-        setItemInCell(new Vector2Int(_cellPos.x, _cellPos.y));
+        setItemInCell_2(new Vector2Int(_cellPos.x, _cellPos.y));
     }
-    public void setItemInCell(Vector3 _pos)
+    public void setItemInCell_World(Vector3 _pos)
     {
         setItemInCell(GameManager.instance.mapManager.worldToCell(_pos));
     }

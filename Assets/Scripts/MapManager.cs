@@ -11,10 +11,14 @@ public class MapManager : MonoBehaviour
 
     public Sprite[] tileSprite;
 
+    public Sprite[] itemSprite;
+
     public TextAsset Data;
 
 
-    void Start ()
+
+
+    public void Init ()
     {
         readData();
     }
@@ -39,7 +43,7 @@ public class MapManager : MonoBehaviour
                 C.sprite = tileSprite[int.Parse(d_v)];
                 setCell(V2_V3(C.pos), C);
 
-                getCell(_pos).isPassable = (d_v == "1");
+                getCell_3(_pos).isPassable = (d_v == "1");
             }
         }
 
@@ -48,14 +52,36 @@ public class MapManager : MonoBehaviour
 
 
 
+    public void freshCellItem(Vector2Int _cellPos, Item _item)
+    {
+        //刷新道具圖
+        Sprite targetSp;
+
+        if (_item == null)
+        {
+            targetSp = null;
+        }
+        else
+        {
+            targetSp = itemSprite[_item.type];
+        }
+
+        Cell C = Cell.GetDefault(_cellPos);
+        C.sprite = targetSp;
+
+        setCell(new Vector3Int(_cellPos.x, _cellPos.y, 1), C);
+
+    }
+
+
     //用格子系座標取得格子
-    public Cell getCell(Vector3Int _cellPos)
+    public Cell getCell_3(Vector3Int _cellPos)
     {
         return mainTilemap.GetTile<Cell>(_cellPos);
     }
     public Cell getCell(Vector2Int _cellPos)
     {
-        return getCell(new Vector2Int(_cellPos.x, _cellPos.y));
+        return getCell_3(new Vector3Int(_cellPos.x, _cellPos.y,0));
     }
 
     //用格子系座標設定指定格子
@@ -82,10 +108,9 @@ public class MapManager : MonoBehaviour
 
     //
 
-    //
     public Cell setCellSprite(Vector3Int _pos, Sprite _sp)
     {
-        return setCellSprite(getCell(_pos), _sp);
+        return setCellSprite(getCell_3(_pos), _sp);
     }
 
     public Cell setCellSprite(Cell _cell, Sprite _sp)

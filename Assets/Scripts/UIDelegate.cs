@@ -40,7 +40,7 @@ public class UIDelegate : MonoBehaviour
         buyItem += GameManager.instance.shopManager.buyItem;
 
         setItemInCell = Log;
-        setItemInCell += GameManager.instance.shopManager.setItemInCell;
+        setItemInCell += GameManager.instance.shopManager.setItemInCell_World;
 
     }
 

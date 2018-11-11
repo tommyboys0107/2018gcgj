@@ -8,6 +8,7 @@ public class Cell : Tile
 {
     public Vector2Int pos;
     public bool isPassable;
+
     public Item itemState;
 
 
