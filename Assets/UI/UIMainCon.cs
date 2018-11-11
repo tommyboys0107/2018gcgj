@@ -23,7 +23,7 @@ public class UIMainCon : MonoBehaviour {
 		_ = this;
 	}
 
-	void Start () {
+	IEnumerator Start () {
 		UI.RestButt.onClick += (go) => {
 			UIDelegate.instance.restart();
 		};
@@ -33,6 +33,9 @@ public class UIMainCon : MonoBehaviour {
 		UI.UIYouWin.UI.RButt.onClick += (go) => {
 			UIDelegate.instance.restart();
 		};
+
+		yield return new WaitForSeconds (3);
+		UI.UIGameOver.Open ();
 	}
 
 	static public void SetHP (int value) {
@@ -43,5 +46,8 @@ public class UIMainCon : MonoBehaviour {
 	}
 	static public void SetPrice (int n, int value) {
 		_.UI.UIStore.AllObj [n].obj.GetComponentInChildren <UILabel> ().text = value.ToString ();
+	}
+	static public void GameOver () {
+		_.UI.UIGameOver.Open ();
 	}
 }
