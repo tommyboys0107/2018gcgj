@@ -33,9 +33,6 @@ public class CharManager : MonoBehaviour
 
 
 
-    private void Start()
-    {}
-
     public bool charMoveTo(int _x,int _y)
     {
         float MoveTime = 0.5F;

@@ -17,6 +17,23 @@ public class Move : MonoBehaviour
 
     public void Check () {
 
+        if (GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint)
+        {
+            GameManager.instance.uIDelegate.win();
+            return;
+        }
+
+        if( GameManager.instance.charManager.HP > 0)
+        {
+            GameManager.instance.charManager.HP--;
+        }
+        else
+        {
+            GameManager.instance.uIDelegate.lose();
+            return;
+        }
+
+
         Vector2Int V2 = GameManager.instance.charManager.pos;
         int k = 1;
         Vector2Int[] V2_ARROW = new Vector2Int[]{
@@ -98,11 +115,6 @@ public class Move : MonoBehaviour
 
     }
 
-
-    public void clearItemSp(Vector2Int _pos)
-    {
-
-    }
 
     public int GetFace(Vector2Int Before,Vector2Int After)
     {

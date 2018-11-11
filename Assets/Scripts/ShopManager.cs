@@ -41,13 +41,13 @@ public class ShopManager : MonoBehaviour
         */
         Item Item01 = new Item();
         Item01.type = 0;
-        Item01.staticCost = 10;
-        Item01.DynamicCost = 20;
+        Item01.staticCost = 2;
+        Item01.DynamicCost = 4;
 
         Item Item02 = new Item();
         Item02.type = 1;
-        Item02.staticCost = 10;
-        Item02.DynamicCost = 20;
+        Item02.staticCost = 1;
+        Item02.DynamicCost = 2;
 
         itemList = new List<Item>() { Item01, Item02 };
 

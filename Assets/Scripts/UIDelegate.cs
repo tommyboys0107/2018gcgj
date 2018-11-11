@@ -39,7 +39,7 @@ public class UIDelegate : MonoBehaviour
         goPlay += delegate { GameManager.instance.shopManager.isPlaying = true; };
         goPlay += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.StartGame, 0.9F); };
 
-        restart = Log;
+        restart += GameManager.instance.Reload;
 
         moveView += GameManager.instance.charManager.View;
 
