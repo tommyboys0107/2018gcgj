@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
 
 
-    public Sprite sp;
 
 
-	void Awake ()
+
+
+
+    void Awake ()
     {
         instance = this;
 
@@ -36,20 +38,22 @@ public class GameManager : MonoBehaviour
         uIDelegate.Init();
         shopManager.Init();
 
-        shopManager.coin = 100;
+        shopManager.coin = 1000;
+        charManager.HP = 1000;
+        charManager.pos = mapManager.StartPoint;
 
-        Enter();
+        charManager.mainChar.transform.position = mapManager.cellToWorld(new Vector3Int(charManager.pos.x, charManager.pos.y, 0)) + new Vector3(0, 0, -1);
+    
+
+  
+
+        
 
 
     }
 
     void Enter()
     {
-
-        //設定起始點
-        mapManager.setCell(new Vector3Int(3, 0, 1), mapManager.setCellSprite(Cell.GetDefault(new Vector2Int(3, 0)), sp));
-
-
 
     }
 

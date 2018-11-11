@@ -34,16 +34,15 @@ public class UIDelegate : MonoBehaviour
 
         enterGame = Log;
 
-        goPlay = Log;
+        goPlay += GameManager.instance.charManager.move.Check;
+        goPlay += delegate { GameManager.instance.shopManager.isPlaying = true; };
 
         restart = Log;
 
-        moveView = Log;
+        moveView += GameManager.instance.charManager.View;
 
-        buyItem = Log_b;
         buyItem += GameManager.instance.shopManager.buyItem;
 
-        setItemInCell = Log;
         setItemInCell += GameManager.instance.shopManager.setItemInCell_World;
 
         lose += delegate { Debug.Log("LOSE"); };
@@ -51,9 +50,6 @@ public class UIDelegate : MonoBehaviour
         win += delegate { Debug.Log("WIN"); };
     }
 
-void HandleSetItemInCell(Vector3 _worldPosition)
-    {
-    }
 
 
     void Log()

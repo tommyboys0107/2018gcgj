@@ -5,14 +5,13 @@ using DG.Tweening;
 
 public class CharManager : MonoBehaviour 
 {
-    [SerializeField]
-    GameObject mainChar;
+    public GameObject mainChar;
     [SerializeField]
     SpriteRenderer charSpRender;
     public Move move;
 
 
-    int _HP = 10;
+    int _HP;
     public int HP
     {
         get { return _HP; }
@@ -35,9 +34,7 @@ public class CharManager : MonoBehaviour
 
 
     private void Start()
-    {
-        move.Check();
-    }
+    {}
 
     public bool charMoveTo(int _x,int _y)
     {
@@ -63,12 +60,15 @@ public class CharManager : MonoBehaviour
     Vector3 _vel;
     void CameraFollowChar()
     {
-        GameManager.instance.mainCamera.transform.position = Vector3.SmoothDamp(
-            GameManager.instance.mainCamera.transform.position,
-            Vector3.Scale(mainChar.transform.position, new Vector3(1, 1, 0)) + new Vector3(0, 0, -100),
-            ref _vel,
-            cameraFollow
-        );
+        if (GameManager.instance.shopManager.isPlaying)
+        {
+            GameManager.instance.mainCamera.transform.position = Vector3.SmoothDamp(
+                GameManager.instance.mainCamera.transform.position,
+                Vector3.Scale(mainChar.transform.position, new Vector3(1, 1, 0)) + new Vector3(0, 0, -100),
+                ref _vel,
+                cameraFollow
+            );
+        }
     }
 
     public void ChangeCharFace(int _face)
@@ -79,4 +79,14 @@ public class CharManager : MonoBehaviour
         }
     }
 
+
+
+
+    public void View(Vector2 _delta)
+    {
+        if (!GameManager.instance.shopManager.isPlaying)
+        {
+            GameManager.instance.mainCamera.transform.position -= new Vector3(_delta.x, _delta.y, 0);
+        }
+    }
 }

@@ -17,6 +17,9 @@ public class MapManager : MonoBehaviour
 
 
 
+    public Vector2Int StartPoint = new Vector2Int(3, 0);
+    public Vector2Int EndPoint = new Vector2Int(3, 19);
+
 
     public void Init ()
     {
@@ -50,7 +53,15 @@ public class MapManager : MonoBehaviour
 
     }
 
-
+    public bool CheckWin()
+    {
+        if (GameManager.instance.charManager.pos == EndPoint)
+        {
+            GameManager.instance.uIDelegate.win();
+            return true;
+        }
+        return false;
+    }
 
     public void freshCellItem(Vector2Int _cellPos, Item _item)
     {
