@@ -16,7 +16,12 @@ public class Move : MonoBehaviour
         
 
     public void Check () {
-
+        /*
+        Debug.LogFormat("{0} = {1} , {2}",GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint,
+                       GameManager.instance.charManager.pos,
+                        GameManager.instance.mapManager.EndPoint
+                       );
+                       */
         if (GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint)
         {
             GameManager.instance.uIDelegate.win();
