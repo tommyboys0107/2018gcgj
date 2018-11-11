@@ -34,7 +34,7 @@ public class Move : MonoBehaviour
         for (int i = 0; i < V2_ARROW.Length; i++) ///判斷方向是否可前進，，計入list
         {
             Vector3Int V3 = new Vector3Int(V2_ARROW[i].x, V2_ARROW[i].y, 0);
-            Cell C = GameManager.instance.mapManager.getCell(V3);
+            Cell C = GameManager.instance.mapManager.getCell_3(V3);
 
             if (C == null) continue;
 
@@ -54,7 +54,7 @@ public class Move : MonoBehaviour
             for (int j = 0; j < CanPassList.Count;j++)
             {
                 Vector3Int V4 = new Vector3Int(CanPassList[j].x, CanPassList[j].y, 0);
-                Cell D = GameManager.instance.mapManager.getCell(V4);
+                Cell D = GameManager.instance.mapManager.getCell_3(V4);
                 if (D.itemState != null)
                 {
                     if (D.itemState.type == 0) ///碰到道具
@@ -84,12 +84,18 @@ public class Move : MonoBehaviour
         Vector2Int After = targetPos;
 
         lastPos = V2;
-        GetFace(Before,After);
+
+        GameManager.instance.charManager.ChangeCharFace(GetFace(Before, After));
         GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);  //
 
 
     }
 
+
+    public void clearItemSp(Vector2Int _pos)
+    {
+
+    }
 
     public int GetFace(Vector2Int Before,Vector2Int After)
     {
@@ -101,22 +107,22 @@ public class Move : MonoBehaviour
         if(xResult==1 && yResult ==0)
         {
             ///結果為右
-            finResult = 0;
+            finResult = 1;
         }
         else if (xResult==-1 && yResult ==0)
         {
             ///結果為左
-            finResult = 1;
+            finResult = 3;
         }
         else if (yResult==1 && xResult ==0)
         {
             ///結果為上
-            finResult = 2;
+            finResult = 0;
         }
         else if (yResult==-1 && xResult ==0)
         {
             ///結果為下
-            finResult = 3;
+            finResult = 2;
         }
         else
         {
