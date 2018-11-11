@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CliffLeeCL;
 
 public class UIDelegate : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class UIDelegate : MonoBehaviour
 
         goPlay += GameManager.instance.charManager.move.Check;
         goPlay += delegate { GameManager.instance.shopManager.isPlaying = true; };
+        goPlay += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.StartGame, 0.9F); };
 
         restart = Log;
 
@@ -44,8 +46,9 @@ public class UIDelegate : MonoBehaviour
         buyItem += GameManager.instance.shopManager.buyItem;
 
         setItemInCell += GameManager.instance.shopManager.setItemInCell_World;
+        setItemInCell += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.ItemDrop, 0.8F); };
 
-        lose += delegate { Debug.Log("LOSE"); };
+        lose += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.GameOver, 0.8F); };
 
         win += delegate { Debug.Log("WIN"); };
     }
