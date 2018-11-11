@@ -13,16 +13,6 @@ public class MapManager : MonoBehaviour
 
     public TextAsset Data;
 
-    public Dictionary<TileBase,Cell> cellMap;
-
-
-
-    public Cell getCell(TileBase _index)
-    {
-        return cellMap[_index];
-    }
-
-
 
     void Start ()
     {
@@ -61,8 +51,11 @@ public class MapManager : MonoBehaviour
     //用格子系座標取得格子
     public Cell getCell(Vector3Int _cellPos)
     {
-
         return mainTilemap.GetTile<Cell>(_cellPos);
+    }
+    public Cell getCell(Vector2Int _cellPos)
+    {
+        return getCell(new Vector2Int(_cellPos.x, _cellPos.y));
     }
 
     //用格子系座標設定指定格子

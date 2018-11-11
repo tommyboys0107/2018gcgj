@@ -10,7 +10,7 @@ public class UIDelegate : MonoBehaviour
     public delegate void GoPlay();                                              //按下開始行進
     public delegate void Restart();                                             //按下重來按鈕
     public delegate void MoveView(Vector2 _delta);                              //移動視野
-    public delegate void BuyItem(int _itemIndex);                               //買道具
+    public delegate bool BuyItem(int _itemIndex);                               //買道具
     public delegate void SetItemInCell(Vector3 _worldPosition);                 //放置道具
 
 
@@ -26,13 +26,49 @@ public class UIDelegate : MonoBehaviour
     {
         instance = this;
 
-        enterGame = null;
-        goPlay = null;
-        restart = null;
-        moveView = null;
-        buyItem = null;
-        setItemInCell = null;
+        //
 
+        enterGame += Log;
+
+        goPlay += Log;
+
+        restart += Log;
+
+        moveView += Log;
+
+        buyItem += Log_b;
+        buyItem += GameManager.instance.shopManager.buyItem;
+
+        setItemInCell += Log;
+        setItemInCell += GameManager.instance.shopManager.setItemInCell;
+
+    }
+
+void HandleSetItemInCell(Vector3 _worldPosition)
+    {
+    }
+
+
+    void Log()
+    {
+        Debug.Log("Delegate Invoke!");
+    }
+    void Log(Vector2 _)
+    {
+        Debug.Log("Delegate Invoke! Param: " + _.ToString());
+    }
+    void Log(Vector3 _)
+    {
+        Debug.Log("Delegate Invoke! Param: " + _.ToString());
+    }
+    void Log(int _)
+    {
+        Debug.Log("Delegate Invoke! Param: " + _.ToString());
+    }
+    bool Log_b(int _)
+    {
+        Debug.Log("Delegate Invoke! Param: " + _.ToString());
+        return false;
     }
 
 
