@@ -36,8 +36,8 @@ public class UIMainCon : MonoBehaviour {
             UIDelegate.instance.restart();
         };
 		UI.GoPlayButt.onClick += (go) => {
-			UIDelegate.instance.goPlay ();
 			OnOffMove (true);
+			UIDelegate.instance.goPlay ();
 		};
 		UI.MoveViewButt.OpenDel += (V3) => {
 			UIDelegate.instance.moveView (UI.MoveViewButt.DragV2);
