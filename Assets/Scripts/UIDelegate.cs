@@ -50,7 +50,8 @@ public class UIDelegate : MonoBehaviour
 
         lose += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.GameOver, 0.8F); };
 
-        win += delegate { Debug.Log("WIN"); };
+        win += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.LevelClear1, 0.8F); };
+        win += delegate { AudioManager.Instance.PlaySound(AudioManager.AudioName.LevelClear2, 0.8F); };
     }
 
 
