@@ -14,6 +14,13 @@ public class UIDelegate : MonoBehaviour
     public delegate void SetItemInCell(Vector3 _worldPosition);                 //放置道具
 
 
+    public EnterGame enterGame;
+    public GoPlay goPlay;
+    public Restart restart;
+    public MoveView moveView;
+    public BuyItem buyItem;
+    public SetItemInCell setItemInCell;
+
 
     void Awake()
     {
