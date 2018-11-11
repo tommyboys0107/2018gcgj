@@ -111,7 +111,7 @@ public class Move : MonoBehaviour
 
         GameManager.instance.charManager.ChangeCharFace(GetFace(Before, After));
         GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);  //
-
+        GameManager.instance.mapManager.freshCellItem(Before, null);
 
     }
 
