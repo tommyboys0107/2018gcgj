@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1439364206083168}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1439364206083168
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4467316403553228}
   - component: {fileID: 114460028979356382}
@@ -30,12 +30,12 @@ GameObject:
 --- !u!4 &4467316403553228
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439364206083168}
-  m_LocalRotation: {x: -0.009123701, y: -0.035221323, z: 0.035422325, w: 0.9987099}
-  m_LocalPosition: {x: -118.36495, y: -234.27158, z: -513.19824}
-  m_LocalScale: {x: 4.071654, y: 4.0716553, z: 4.0716534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +43,7 @@ Transform:
 --- !u!114 &114460028979356382
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439364206083168}
   m_Enabled: 1
@@ -53,16 +53,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioGroup: {fileID: 0}
   audioClips:
-  - {fileID: 8300000, guid: 3c48da49e88e6964e945d2d8751688d2, type: 3}
-  - {fileID: 8300000, guid: 0997a8537d5893843be1f3e3d1ad77ed, type: 3}
-  - {fileID: 8300000, guid: 55056b3843e75cc488730c4483e5d37a, type: 3}
-  - {fileID: 8300000, guid: 487dac1487470ac43ab4956b2f4d937d, type: 3}
-  - {fileID: 8300000, guid: 322920ff8b606eb47bfb28dea306b6ed, type: 3}
-  - {fileID: 8300000, guid: 6f3ab2fc097b588418e84c6cf7f25c90, type: 3}
-  - {fileID: 8300000, guid: db30ea899865e0348ab6b79954bdf00c, type: 3}
-  - {fileID: 8300000, guid: 76d9584d596763d47ad601196f42d79e, type: 3}
-  - {fileID: 8300000, guid: 855defc1d29878244abd66f0fa595e78, type: 3}
-  - {fileID: 8300000, guid: 5a6bc55cc40655e4ea5de46259a604f6, type: 3}
+  - {fileID: 8300000, guid: 5e5e2ef64054e8e4e81d5b5d38da3935, type: 3}
+  - {fileID: 8300000, guid: c6a0402dffa8c974db35902779aa85b5, type: 3}
+  - {fileID: 8300000, guid: 0d1df21c18bc9be428a9f04480fe512d, type: 3}
+  - {fileID: 8300000, guid: c71a24d6ed5811242b22cee75f527ac1, type: 3}
+  - {fileID: 8300000, guid: 521b6fb4091fc9e4681a5575bc34540f, type: 3}
+  - {fileID: 8300000, guid: 741ed58a39295c24c890c865a0cf4e95, type: 3}
+  - {fileID: 8300000, guid: aad0b03dc32ca7240ab2758db4d72390, type: 3}
+  - {fileID: 8300000, guid: 04397814df4f49c4686f66814c520306, type: 3}
+  - {fileID: 8300000, guid: 2895ec41fea1a1f48b5fadb4cd5145ce, type: 3}
   pooledSources: []
   pooledAmount: 10
   lowPitchRange: 0.95
