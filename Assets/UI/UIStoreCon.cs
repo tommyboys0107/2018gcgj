@@ -5,6 +5,16 @@ using UnityEngine;
 public class UIStoreCon : ObjArray {
 	public UISprite _Butt;
 
+	void Start () {
+		for (int i = 0; i < AllObj.Length; i++) {
+				UIMainCon._.UI.UIStore.GetObjT <DragButt> (i).EndDel += (V3) => {
+				print ("在場地x=" + V3.x + "  y=" + V3.y + "放開");
+				GameObject aaaa = GameObject.Find ("aaaa");
+				aaaa.transform.position = V3;
+			};
+		}
+	}
+
 	public void SetPrice (int n, int value) {
 		AllObj [n].obj.GetComponentInChildren <UILabel> ().text = value.ToString ();
 	}
@@ -19,11 +29,6 @@ public class UIStoreCon : ObjArray {
 	public void ButtonDragEnd (GameObject Go) {
 		_Butt.gameObject.SetActive (false);
 		Vector2 EndV2 = Go.GetComponent <DragButt> ().EndV2;
-		print ("在場地x=" + EndV2.x + "  y=" + EndV2.y + "放開");
-
-
-		GameObject aaaa = GameObject.Find ("aaaa");
-		aaaa.transform.position = EndV2;
 	}
 
 	[ContextMenu ("test")]

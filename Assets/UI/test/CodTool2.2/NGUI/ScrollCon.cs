@@ -46,7 +46,7 @@ public class ScrollCon : MonoBehaviour
 		}
 	}
 
-	public VoidIntIntDel UpDateEvent;
+	public Void_IntIntDel UpDateEvent;
 	void Update () {
 		if (UpDateEvent != null) {
 			UpDateEvent (Xn, Yn);

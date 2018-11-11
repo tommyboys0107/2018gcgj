@@ -38,17 +38,14 @@ public class DragButt : UIEventListener {//會抓到按下與放開的座標（�
 	}
 	public bool IsMove;
 
-	public UnityEvent	StartEvent;
-	public VoidDel 		StartDel;
-	public UnityEvent	OpenEvent;
-	public VoidDel 		OpenDel;
-	public UnityEvent   EndEvent;
-	public VoidDel		EndDel;
+	public UnityEvent	   StartEvent;
+	public Void_Vector3Del StartDel;
+	public UnityEvent	   OpenEvent;
+	public Void_Vector3Del OpenDel;
+	public UnityEvent      EndEvent;
+	public Void_Vector3Del EndDel;
 	
 	void Start () {
-//		StartDel = new VoidDel ();
-//		OpenDel = new VoidDel ();
-//		EndDel = new VoidDel ();
 
 		if (ToCam == null) {
 			ToCam = Camera.main;
@@ -59,10 +56,10 @@ public class DragButt : UIEventListener {//會抓到按下與放開的座標（�
 				StartV2 = GetV2 (Input.mousePosition);
 				GapV2 = (Vector2)(transform.position) - StartV2;
 				StartEvent.Invoke ();
-				LoadDel (StartDel);
+				LoadDel (StartDel, StartV2);
 			} else {
 				EndEvent.  Invoke ();
-				LoadDel (EndDel);
+				LoadDel (EndDel, EndV2);
 			}
 		};
 	}
@@ -74,12 +71,12 @@ public class DragButt : UIEventListener {//會抓到按下與放開的座標（�
 			transform.position = EndV2 + GapV2;
 		}
 		OpenEvent.Invoke ();
-		LoadDel (OpenDel);
+		LoadDel (OpenDel, EndV2);
 	}
-
-	public void LoadDel (VoidDel Del) {
+	
+	public void LoadDel (Void_Vector3Del Del, Vector3 value) {
 		if (Del != null) {
-			Del ();
+			Del (value);
 		}
 	}
 

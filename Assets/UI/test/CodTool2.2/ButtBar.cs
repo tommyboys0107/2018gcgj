@@ -6,7 +6,7 @@ public class ButtBar : ObjArray {
 
 	public GameObject c;
 
-	public VoidIntDel Del;
+	public Void_IntDel Del;
 
 	public int _n = -1;
 	public int n {

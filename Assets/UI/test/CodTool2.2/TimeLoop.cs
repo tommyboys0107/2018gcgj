@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Events;
 
 public class TimeLoop : MonoBehaviour {
-	public VoidIntDel Del;
+	public Void_IntDel Del;
 	public UnityEvent TheEvent;
 	public float Delay;
 	public float Time = 1;
