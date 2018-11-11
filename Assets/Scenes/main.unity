@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b32db3f4049646eebbee29e22ef1a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIDelegate: {fileID: 2049651402}
   shopManager: {fileID: 489631203}
   mapManager: {fileID: 1316755910}
   charManager: {fileID: 474670645}

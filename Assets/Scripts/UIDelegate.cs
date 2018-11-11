@@ -22,10 +22,19 @@ public class UIDelegate : MonoBehaviour
     public SetItemInCell setItemInCell;
 
 
-    void Awake()
+    public void Init()
     {
         instance = this;
+
+        enterGame = null;
+        goPlay = null;
+        restart = null;
+        moveView = null;
+        buyItem = null;
+        setItemInCell = null;
+
     }
+
 
 
 

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     static public GameManager instance;
 
+    public UIDelegate uIDelegate;
     public ShopManager shopManager;
     public MapManager mapManager;
     public CharManager charManager;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 	void Awake ()
     {
         instance = this;
+        uIDelegate.Init();
 
         Invoke("Enter",3F);
 
