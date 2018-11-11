@@ -19,24 +19,20 @@ public class UIMainCon : MonoBehaviour {
 	}
 	public _UI UI;
 
-	void Awake () {
+	public void Init () {
+
 		_ = this;
-	}
 
-	IEnumerator Start () {
-		UI.RestButt.onClick += (go) => {
-			UIDelegate.instance.restart();
-		};
-		UI.UIGameOver.UI.RButt.onClick += (go) => {
-			UIDelegate.instance.restart();
-		};
-		UI.UIYouWin.UI.RButt.onClick += (go) => {
-			UIDelegate.instance.restart();
-		};
-
-		yield return new WaitForSeconds (3);
-		UI.UIGameOver.Open ();
-	}
+        UI.RestButt.onClick += (go) => {
+            UIDelegate.instance.restart();
+        };
+        UI.UIGameOver.UI.RButt.onClick += (go) => {
+            UIDelegate.instance.restart();
+        };
+        UI.UIYouWin.UI.RButt.onClick += (go) => {
+            UIDelegate.instance.restart();
+        };
+    }
 
 	static public void SetHP (int value) {
 		_.UI.HPLabel.text = value.ToString ();

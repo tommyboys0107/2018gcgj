@@ -8,6 +8,17 @@ public class CharManager : MonoBehaviour
     GameObject mainChar;
 
 
+    int _leaveTime = 0;
+    public int leaveTime
+    {
+        get { return _leaveTime; }
+        set 
+        {
+            if (value == 0) GameManager.instance.timeUp();
+            _leaveTime = value;
+        }
+
+    }
 
     public Vector2Int pos;
 

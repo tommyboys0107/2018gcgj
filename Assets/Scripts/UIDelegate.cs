@@ -28,18 +28,18 @@ public class UIDelegate : MonoBehaviour
 
         //
 
-        enterGame += Log;
+        enterGame = Log;
 
-        goPlay += Log;
+        goPlay = Log;
 
-        restart += Log;
+        restart = Log;
 
-        moveView += Log;
+        moveView = Log;
 
-        buyItem += Log_b;
+        buyItem = Log_b;
         buyItem += GameManager.instance.shopManager.buyItem;
 
-        setItemInCell += Log;
+        setItemInCell = Log;
         setItemInCell += GameManager.instance.shopManager.setItemInCell;
 
     }

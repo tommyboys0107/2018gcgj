@@ -454,6 +454,8 @@ MonoBehaviour:
   shopManager: {fileID: 489631203}
   mapManager: {fileID: 1316755910}
   charManager: {fileID: 474670645}
+  uIMainCon: {fileID: 0}
+  UIPrefab: {fileID: 1590372976394192, guid: 0fdbe49b19c514f36a020dc75640f4c7, type: 2}
   sp: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1020338869
 GameObject:

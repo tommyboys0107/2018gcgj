@@ -39,6 +39,16 @@ public class ShopManager : MonoBehaviour
         修改金錢顯示 UIMainCon.SetGP(int);
         修改商品價格顯示 UIMainCon.SetPrice(int 編號, int 價格)
         */
+        Item I = new Item();
+        I.type = 0;
+        I.staticCost = 10;
+        I.DynamicCost = 20;
+
+        itemList = new List<Item>() { I, I, I, I, I };
+
+
+
+
     }
 
 
@@ -78,6 +88,7 @@ public class ShopManager : MonoBehaviour
     public void setItemInCell(Vector2Int _cellPos)
     {
         GameManager.instance.mapManager.getCell(_cellPos).itemState = HoldItem;
+        HoldItem = null;
         Debug.LogFormat("set Item in Cell({0},{1})", _cellPos.x, _cellPos.y);
     }
     public void setItemInCell(Vector3Int _cellPos)
@@ -91,12 +102,9 @@ public class ShopManager : MonoBehaviour
 
 }
 
-
-
-
-
 public class Item
 {
+    public int type;
     public int staticCost;
     public int DynamicCost;
 }

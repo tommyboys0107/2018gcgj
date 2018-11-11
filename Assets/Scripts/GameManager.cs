@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public MapManager mapManager;
     public CharManager charManager;
 
+    public UIMainCon uIMainCon;
+    [SerializeField]
+    GameObject UIPrefab;
+
 
     public Sprite sp;
 
@@ -20,7 +24,17 @@ public class GameManager : MonoBehaviour
 	void Awake ()
     {
         instance = this;
+
+        GameObject G = Instantiate(UIPrefab);
+
+        uIMainCon = FindObjectOfType(typeof(UIMainCon)) as UIMainCon;
+
+
+        uIMainCon.Init();
         uIDelegate.Init();
+        shopManager.Init();
+
+        shopManager.coin = 100;
 
         Invoke("Enter",3F);
 
@@ -33,6 +47,14 @@ public class GameManager : MonoBehaviour
 
 
 
+    }
+
+
+
+
+    public void timeUp()
+    {
+        Debug.Log("Time Up");
     }
 
 }
