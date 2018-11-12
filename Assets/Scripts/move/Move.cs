@@ -56,7 +56,7 @@ public class Move : MonoBehaviour
         for (int i = 0; i < V2_ARROW.Length; i++) ///判斷方向是否可前進，，計入list
         {
             Vector3Int V3 = new Vector3Int(V2_ARROW[i].x, V2_ARROW[i].y, 0);
-            Cell C = GameManager.instance.mapManager.getCell_3(V3);
+            Cell C = GameManager.instance.mapManager.getCell(V3);
 
             if (C == null) continue;
 
@@ -72,7 +72,7 @@ public class Move : MonoBehaviour
             for (int j = 0; j < CanPassList.Count;j++)
             {
                 Vector3Int V4 = new Vector3Int(CanPassList[j].x, CanPassList[j].y, 0);
-                Cell D = GameManager.instance.mapManager.getCell_3(V4);
+                Cell D = GameManager.instance.mapManager.getCell(V4);
                 if (D.itemState != null)
                 {
                     if (D.itemState.type == 0) ///碰到道具

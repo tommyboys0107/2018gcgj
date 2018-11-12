@@ -84,11 +84,10 @@ public class ShopManager : MonoBehaviour
             return false;   //購買不存在的index
         }
 
-
         int spendCoin = isPlaying ? itemList[_itemIndex].DynamicCost : itemList[_itemIndex].staticCost;
         if (coin >= spendCoin)    //判斷金幣是否足夠
         {
-            coin -= spendCoin;
+            coin -= spendCoin;      //消耗金幣
             HoldItem = itemList[_itemIndex];
 
             return true;
@@ -101,15 +100,20 @@ public class ShopManager : MonoBehaviour
 
     public void setItemInCell_2(Vector2Int _cellPos)
     {
-        GameManager.instance.mapManager.getCell(_cellPos).itemState = HoldItem;
+        Cell targetCell = GameManager.instance.mapManager.getCell(_cellPos);
 
-        GameManager.instance.mapManager.freshCellItem(_cellPos, HoldItem);  //刷新上方的圖
-
+        if (targetCell != null)
+        {
+            targetCell.itemState = HoldItem;
+            GameManager.instance.mapManager.freshCellItem(_cellPos, HoldItem);  //刷新上方的圖
+        }
+        else
+        {
+            int spendCoin = isPlaying ? HoldItem.DynamicCost : HoldItem.staticCost;
+            coin += spendCoin;      //因為放置失敗所以加回金幣
+        }
+        
         HoldItem = null;
-
-
-
-        Debug.LogFormat("set Item in Cell({0},{1})", _cellPos.x, _cellPos.y);
     }
     public void setItemInCell(Vector3Int _cellPos)
     {

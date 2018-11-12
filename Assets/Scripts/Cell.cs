@@ -15,7 +15,7 @@ public class Cell : Tile
 
     static public Cell GetDefault(Vector2Int _pos)
     {
-        Cell returnCell = new Cell();
+        Cell returnCell = CreateInstance<Cell>();
 
         returnCell.pos = _pos;
         returnCell.isPassable = false;
@@ -23,4 +23,5 @@ public class Cell : Tile
 
         return returnCell;
     }
+    
 }
