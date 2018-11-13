@@ -755,10 +755,10 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
   - {fileID: 21300006, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
   - {fileID: 21300010, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300024, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
+  - {fileID: 21300026, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
+  - {fileID: 21300030, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
+  - {fileID: 21300028, guid: 11df463d7d36c4f2dbf29ba07a8e13ff, type: 3}
   itemSprite:
   - {fileID: 21300000, guid: a0bfe641305fa49b69f4d84d78030737, type: 3}
   - {fileID: 21300000, guid: 8252747fbbd9c49f58035c70f76fa800, type: 3}

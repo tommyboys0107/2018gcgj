@@ -8,6 +8,8 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     public Tilemap mainTilemap;
 
+    public const int LAYER_CELL = 0;
+    public const int LAYER_ITEM = 1;
 
     public Sprite wallSprite;
     public Sprite[] roadSprite;
@@ -51,7 +53,7 @@ public class MapManager : MonoBehaviour
                 if (j == 0) mapSize = new Vector2Int(d.Length, lines.Length);
 
 
-                Vector3Int _pos = new Vector3Int(j, i, 0);
+                Vector3Int _pos = new Vector3Int(j, i, LAYER_CELL);
                 string d_v = d[j];
 
                 Cell C = Cell.GetDefault(V3_V2(_pos));
@@ -71,7 +73,7 @@ public class MapManager : MonoBehaviour
         {
             for (int j = 0; j < mapSize.x; j++)
             {
-                Vector3Int _pos = new Vector3Int(j, i, 0);
+                Vector3Int _pos = new Vector3Int(j, i, LAYER_CELL);
                 Cell C = getCell(V3_V2(_pos));
 
                 setCell(V2_V3(C.pos), null);
@@ -121,10 +123,11 @@ public class MapManager : MonoBehaviour
 
         C.sprite = targetSp;
 
-        setCell(new Vector3Int(_cellPos.x, _cellPos.y, 1), C);
+        setCell(new Vector3Int(_cellPos.x, _cellPos.y, LAYER_ITEM), null);
+        setCell(new Vector3Int(_cellPos.x, _cellPos.y, LAYER_ITEM), C);
     }
 
-
+    //取得指定座標格的方向Flag
     ArrowFlag getCellRoadType(Vector2Int _pos)
     {
         ArrowFlag flag = ArrowFlag.None;
@@ -146,6 +149,7 @@ public class MapManager : MonoBehaviour
         return flag;
     }
 
+    //由方向Flag轉換為對應Int
     int getRoadSpriteIndex(ArrowFlag _flag)
     {
 
@@ -175,6 +179,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    //取得指定相鄰方向的格子
     public T getNeighborCell<T>(Vector2Int _pos, ArrowFlag _arrow) where T : Tile
     {
         Dictionary<ArrowFlag, Vector2Int> neighborPosList = new Dictionary<ArrowFlag, Vector2Int>();
@@ -196,7 +201,7 @@ public class MapManager : MonoBehaviour
     }
     public Cell getCell(Vector2Int _cellPos)
     {
-        return getCell(new Vector3Int(_cellPos.x, _cellPos.y,0));
+        return getCell(new Vector3Int(_cellPos.x, _cellPos.y, LAYER_CELL));
     }
     public T getCell<T>(Vector3Int _cellPos) where T : Tile
     {
@@ -208,10 +213,12 @@ public class MapManager : MonoBehaviour
     {
         mainTilemap.SetTile(_cellPos, _cell);
     }
-
+    public void setCell(Vector2Int _cellPos, Cell _cell)
+    {
+        setCell(V2_V3(_cellPos), _cell);
+    }
 
     //
-
 
     //用格子系座標取得世界系座標
     public Vector3 cellToWorld(Vector3Int _cellPos)
@@ -242,7 +249,7 @@ public class MapManager : MonoBehaviour
 
     static Vector3Int V2_V3(Vector2Int V2)
     {
-        return new Vector3Int(V2.x, V2.y, 0);
+        return new Vector3Int(V2.x, V2.y, LAYER_CELL);
     }
     static Vector2Int V3_V2(Vector3Int V3)
     {

@@ -36,7 +36,7 @@ public class CharManager : MonoBehaviour
     public bool charMoveTo(int _x,int _y)
     {
         float MoveTime = 0.5F;
-        mainChar.transform.DOMove(GameManager.instance.mapManager.cellToWorld(new Vector3Int(_x, _y, 0)) + new Vector3(0, 0, -1), MoveTime)
+        mainChar.transform.DOMove(GameManager.instance.mapManager.cellToWorld(new Vector3Int(_x, _y, MapManager.LAYER_CELL)) + new Vector3(0, 0, -1), MoveTime)
                 .OnComplete(delegate
                 {
                     move.Check();

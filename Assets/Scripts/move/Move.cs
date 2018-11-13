@@ -5,23 +5,14 @@ using UnityEngine;
 public class Move : MonoBehaviour 
 {
    
-    
-
     List<Vector2Int> CanPassList = new List<Vector2Int>();
     List<Vector2Int> FirstList = new List<Vector2Int>();
     Vector2Int lastPos;
     Vector2Int targetPos;
     Vector2Int beforePos;
-
-        
-
-    public void Check () {
-        /*
-        Debug.LogFormat("{0} = {1} , {2}",GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint,
-                       GameManager.instance.charManager.pos,
-                        GameManager.instance.mapManager.EndPoint
-                       );
-                       */
+    
+    public void Check ()
+    {
         if (GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint)
         {
             GameManager.instance.uIDelegate.win();
@@ -42,10 +33,10 @@ public class Move : MonoBehaviour
         Vector2Int V2 = GameManager.instance.charManager.pos;
         int k = 1;
         Vector2Int[] V2_ARROW = new Vector2Int[]{
-            V2 + new Vector2Int(0,k),
-            V2 + new Vector2Int(0,-k),
-            V2 + new Vector2Int(-k,0),
-            V2 + new Vector2Int(k,0)
+            V2 + new Vector2Int(0, k),
+            V2 + new Vector2Int(0, -k),
+            V2 + new Vector2Int(-k, 0),
+            V2 + new Vector2Int(k, 0)
         };
 
         Vector3Int V0 = new Vector3Int(lastPos.x, lastPos.y, 0);
@@ -114,20 +105,25 @@ public class Move : MonoBehaviour
 
         lastPos = V2;
 
-        GameManager.instance.charManager.ChangeCharFace(GetFace(Before, After));
-        GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);  //
-        GameManager.instance.mapManager.freshCellItem(Before, null);
+
+
+        GameManager.instance.charManager.ChangeCharFace(GetFace(Before, After));          //改變角色面向
+
+        GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);            //將角色移動至目標格
+
+        GameManager.instance.shopManager.removeItemFromCell(Before);                      //移除所經過格子上的道具
 
     }
 
 
-    public int GetFace(Vector2Int Before,Vector2Int After)
+    public int GetFace(Vector2Int Before, Vector2Int After)
     {
         int finResult;
         int xResult= 0;
         int yResult = 0;
         xResult = After.x - Before.x;
         yResult = After.y - Before.y;
+        
         if(xResult==1 && yResult ==0)
         {
             ///結果為右
