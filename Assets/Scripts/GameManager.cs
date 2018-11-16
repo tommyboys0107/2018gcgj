@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
 
     public UIDelegate uIDelegate;
-    public ShopManager shopManager;
+    public ItemManager itemManager;
     public MapManager mapManager;
     public CharManager charManager;
 
@@ -40,16 +40,16 @@ public class GameManager : MonoBehaviour
         mapManager.Init();
         uIMainCon.Init();
         uIDelegate.Init();
-        shopManager.Init();
+        itemManager.Init();
 
-        shopManager.coin = 60;
+        itemManager.coin = 60;
         charManager.HP = 120;
         charManager.pos = mapManager.StartPoint;
 
         charManager.mainChar.transform.position = mapManager.cellToWorld(new Vector3Int(charManager.pos.x, charManager.pos.y, 0)) + new Vector3(0, 0, -1);
         mainCamera.transform.position = mapManager.cellToWorld(new Vector3Int(charManager.pos.x, charManager.pos.y, 0)) + new Vector3(0, 0, -100);
 
-        shopManager.isPlaying = false;
+        itemManager.isPlaying = false;
 
 
 

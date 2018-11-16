@@ -17,8 +17,9 @@ public class CharManager : MonoBehaviour
         get { return _HP; }
         set
         {
-            UIMainCon.SetHP(value);
-            _HP = value;
+            int val = Mathf.Clamp(value, 0, 9999);
+            UIMainCon.SetHP(val);
+            _HP = val;
         }
     }
 
@@ -37,8 +38,17 @@ public class CharManager : MonoBehaviour
     {
         float MoveTime = 0.5F;
         mainChar.transform.DOMove(GameManager.instance.mapManager.cellToWorld(new Vector3Int(_x, _y, MapManager.LAYER_CELL)) + new Vector3(0, 0, -1), MoveTime)
+                .SetEase(Ease.Linear)
                 .OnComplete(delegate
                 {
+
+
+                    Cell standCell = GameManager.instance.mapManager.getCell(new Vector2Int(_x, _y));
+                    if (standCell.machine != null)
+                        standCell.machine.Enter();  //執行目前所在格子的機關動作
+
+
+
                     move.Check();
                 });
 
@@ -66,7 +76,7 @@ public class CharManager : MonoBehaviour
     Vector3 _vel;
     void CameraFollowChar()
     {
-        if (GameManager.instance.shopManager.isPlaying)
+        if (GameManager.instance.itemManager.isPlaying)
         {
             GameManager.instance.mainCamera.transform.position = Vector3.SmoothDamp(
                 GameManager.instance.mainCamera.transform.position,
@@ -90,7 +100,7 @@ public class CharManager : MonoBehaviour
 
     public void View(Vector2 _delta)
     {
-        if (!GameManager.instance.shopManager.isPlaying)
+        if (!GameManager.instance.itemManager.isPlaying)
         {
             GameManager.instance.mainCamera.transform.position -= new Vector3(_delta.x, _delta.y, 0);
         }

@@ -9,7 +9,9 @@ public class Cell : Tile
     public Vector2Int pos;
     public bool isPassable;
 
-    public Item itemState;
+    public Item item;
+
+    public Machine machine;
 
 
 
@@ -19,7 +21,7 @@ public class Cell : Tile
 
         returnCell.pos = _pos;
         returnCell.isPassable = false;
-        returnCell.itemState = null;
+        returnCell.item = null;
 
         return returnCell;
     }

@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 489631202}
   - component: {fileID: 489631203}
   m_Layer: 0
-  m_Name: ShopManager
+  m_Name: ItemManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIDelegate: {fileID: 2049651402}
-  shopManager: {fileID: 489631203}
+  itemManager: {fileID: 489631203}
   mapManager: {fileID: 1316755910}
   charManager: {fileID: 474670645}
   uIMainCon: {fileID: 0}
@@ -762,6 +762,9 @@ MonoBehaviour:
   itemSprite:
   - {fileID: 21300000, guid: a0bfe641305fa49b69f4d84d78030737, type: 3}
   - {fileID: 21300000, guid: 8252747fbbd9c49f58035c70f76fa800, type: 3}
+  machineSprite:
+  - {fileID: 21300000, guid: 460f4ccc1d7ad44b29fd2a52b7ab2297, type: 3}
+  - {fileID: 21300000, guid: a93e70ca6d39a4dceaaff0c60a6cb340, type: 3}
   Data: {fileID: 4900000, guid: aca86cea52a214ae3884c9caed044030, type: 3}
   StartPoint: {x: 3, y: 0}
   EndPoint: {x: 3, y: 19}

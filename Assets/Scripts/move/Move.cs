@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     
     public void Check ()
     {
+
         if (GameManager.instance.charManager.pos == GameManager.instance.mapManager.EndPoint)
         {
             GameManager.instance.uIDelegate.win();
@@ -76,13 +77,13 @@ public class Move : MonoBehaviour
 
                 //沒有判斷岔路而停止的部分
 
-                if (D.itemState != null)
+                if (D.item != null)
                 {
-                    if (D.itemState.type == 0) ///碰到道具
+                    if (D.item.type == 0) ///碰到道具
                     {
                         FirstList.Add(CanPassList[j]);
                     }
-                    else if(D.itemState.type == 1)
+                    else if(D.item.type == 1)
                     {
                         FirstList.Remove(CanPassList[j]);
                         CanPassList.Remove(CanPassList[j]);
@@ -123,7 +124,7 @@ public class Move : MonoBehaviour
 
         GameManager.instance.charManager.charMoveTo(targetPos.x, targetPos.y);            //將角色移動至目標格
 
-        GameManager.instance.shopManager.removeItemFromCell(Before);                      //移除所經過格子上的道具
+        GameManager.instance.itemManager.removeItemFromCell(Before);                      //移除所經過格子上的道具
 
     }
 

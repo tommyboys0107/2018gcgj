@@ -8,14 +8,18 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     public Tilemap mainTilemap;
 
-    public const int LAYER_CELL = 0;
-    public const int LAYER_ITEM = 1;
+    public const int LAYER_CELL         = 0;
+    public const int LAYER_ITEM         = 1;
+    public const int LAYER_MACHINE      = 2;
+
 
     public Sprite wallSprite;
     public Sprite[] roadSprite;
 
     public Sprite[] itemSprite;
 
+    public Sprite[] machineSprite;
+    
     public TextAsset Data;
 
 
@@ -37,6 +41,10 @@ public class MapManager : MonoBehaviour
     {
         readData();
         renderMap();
+
+
+        setMachine(new Vector2Int(7, 8), Machine.Create(Machine.Type.Treasure));    //設定寶箱
+        setMachine(new Vector2Int(2, 9), Machine.Create(Machine.Type.Trap));        //設定陷阱
     }
     
     public void readData()
@@ -103,29 +111,44 @@ public class MapManager : MonoBehaviour
         }
         return false;
     }
-    
+
+    //
+
+    //將機關設定在座標上
+    public void setMachine(Vector2Int _cellPos, Machine _machine)
+    {
+        Cell C = getCell(_cellPos);
+        C.machine = _machine;
+
+        freshCellMachine(_cellPos, _machine);
+    }
+
     //刷新道具圖
     public void freshCellItem(Vector2Int _cellPos, Item _item)
     {
-        Sprite targetSp;
+        Sprite targetSp = (_item == null) ? null : itemSprite[_item.type];
 
-        if (_item == null)
-        {
-            targetSp = null;
-        }
-        else
-        {
-            targetSp = itemSprite[_item.type];
-        }
+        freshCellSprite(_cellPos, LAYER_ITEM, targetSp);
+    }
+    //刷新機關圖
+    public void freshCellMachine(Vector2Int _cellPos, Machine _machine)
+    {
+        Sprite targetSp = (_machine == null) ? null : machineSprite[(int)_machine.type];
 
+        freshCellSprite(_cellPos, LAYER_MACHINE, targetSp);
+    }
+    public void freshCellSprite(Vector2Int _cellPos, int _layer, Sprite _sprite)
+    {
         Cell C = getCell(_cellPos);
         if (C == null) C = Cell.GetDefault(_cellPos);
 
-        C.sprite = targetSp;
+        C.sprite = _sprite;
 
-        setCell(new Vector3Int(_cellPos.x, _cellPos.y, LAYER_ITEM), null);
-        setCell(new Vector3Int(_cellPos.x, _cellPos.y, LAYER_ITEM), C);
+        setCell(new Vector3Int(_cellPos.x, _cellPos.y, _layer), null);
+        setCell(new Vector3Int(_cellPos.x, _cellPos.y, _layer), C);
     }
+
+    //
 
     //取得指定座標格的方向Flag
     ArrowFlag getCellRoadType(Vector2Int _pos)
@@ -245,7 +268,7 @@ public class MapManager : MonoBehaviour
         return _cell;
     }
 
-
+    //
 
     static Vector3Int V2_V3(Vector2Int V2)
     {
