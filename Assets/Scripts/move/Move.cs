@@ -60,10 +60,22 @@ public class Move : MonoBehaviour
         FirstList = new List<Vector2Int>();
         for (; k < 11;k++)
         {
+            //只判斷了可以行進的方向，但是並沒有遞增該方向格數的部分
+            V2_ARROW = new Vector2Int[] {
+                V2 + new Vector2Int(0, k),
+                V2 + new Vector2Int(0, -k),
+                V2 + new Vector2Int(-k, 0),
+                V2 + new Vector2Int(k, 0)
+            };
+
             for (int j = 0; j < CanPassList.Count;j++)
             {
+
                 Vector3Int V4 = new Vector3Int(CanPassList[j].x, CanPassList[j].y, 0);
                 Cell D = GameManager.instance.mapManager.getCell(V4);
+
+                //沒有判斷岔路而停止的部分
+
                 if (D.itemState != null)
                 {
                     if (D.itemState.type == 0) ///碰到道具
