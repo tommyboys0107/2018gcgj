@@ -43,35 +43,40 @@ public class MapManager : MonoBehaviour
         renderMap();
 
 
-        setMachine(new Vector2Int(7, 8), Machine.Create(Machine.Type.Treasure));    //設定寶箱
-        setMachine(new Vector2Int(2, 9), Machine.Create(Machine.Type.Trap));        //設定陷阱
     }
     
     public void readData()
     {
 
-        string[] lines = Data.text.Split('\n');
+        JSONObject mapDataJSON = new JSONObject(Data.text);
 
-        for (int i = 0; i < lines.Length;i++)
+        mapSize = new Vector2Int(15, 15);
+
+        for (int i = 0; i< mapSize[0]; i++)
         {
-
-            string[] d = lines[lines.Length-i-1].Split(',');
-            for (int j = 0; j < d.Length; j++)
+            for (int j = 0; j < mapSize[1]; j++)
             {
-                if (j == 0) mapSize = new Vector2Int(d.Length, lines.Length);
-
 
                 Vector3Int _pos = new Vector3Int(j, i, LAYER_CELL);
-                string d_v = d[j];
-
                 Cell C = Cell.GetDefault(V3_V2(_pos));
-
                 setCell(V2_V3(C.pos), C);
 
-                C.isPassable = (d_v == "1");
+                int layer0_value = (int)mapDataJSON["map"][0][mapSize[0] - i -1][j].i;
+
+                C.isPassable = layer0_value != 0;
+                if (layer0_value == 2) StartPoint = new Vector2Int(j, i); 
+                if (layer0_value == 3) EndPoint = new Vector2Int(j, i);
+
+
+                int layer1_value = (int)mapDataJSON["map"][1][mapSize[0] - i - 1][j].i;
+
+                if (layer1_value == 1) setMachine(new Vector2Int(j, i), Machine.Create(Machine.Type.Treasure));
+                if (layer1_value == 2) setMachine(new Vector2Int(j, i), Machine.Create(Machine.Type.Trap));
+
             }
         }
-        
+
+
     }
 
     void renderMap()
