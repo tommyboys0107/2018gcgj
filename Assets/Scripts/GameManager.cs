@@ -37,13 +37,11 @@ public class GameManager : MonoBehaviour
 
         uIMainCon = FindObjectOfType(typeof(UIMainCon)) as UIMainCon;
 
-        mapManager.Init();
         uIMainCon.Init();
         uIDelegate.Init();
         itemManager.Init();
-
-        itemManager.coin = 60;
-        charManager.HP = 120;
+        mapManager.Init();
+        
         charManager.pos = mapManager.StartPoint;
 
         charManager.mainChar.transform.position = mapManager.cellToWorld(new Vector3Int(charManager.pos.x, charManager.pos.y, 0)) + new Vector3(0, 0, -1);

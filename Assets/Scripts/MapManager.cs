@@ -25,8 +25,8 @@ public class MapManager : MonoBehaviour
 
     Vector2Int mapSize = Vector2Int.zero;
 
-    public Vector2Int StartPoint = new Vector2Int(3, 0);
-    public Vector2Int EndPoint = new Vector2Int(3, 19);
+    public Vector2Int StartPoint;
+    public Vector2Int EndPoint;
 
     public enum ArrowFlag
     {
@@ -39,18 +39,28 @@ public class MapManager : MonoBehaviour
 
     public void Init ()
     {
-        readData();
+        readData(Data.text);
         renderMap();
-
-
     }
     
-    public void readData()
+    public void readData(string data)
     {
 
-        JSONObject mapDataJSON = new JSONObject(Data.text);
+        JSONObject mapDataJSON = new JSONObject(data);
 
-        mapSize = new Vector2Int(15, 15);
+        mapSize = new Vector2Int((int)mapDataJSON["size"][0].i, (int)mapDataJSON["size"][1].i);     //設定地圖尺寸
+
+
+
+        Debug.LogFormat("[Map Infomation]\n\nName: {0}\nAuthor: {1}\nDescription: {2}\n", 
+            mapDataJSON["name"], 
+            mapDataJSON["author"], 
+            mapDataJSON["description"]
+            );
+
+
+        GameManager.instance.charManager.HP = (int)mapDataJSON["hp"].i;
+        GameManager.instance.itemManager.coin = (int)mapDataJSON["coin"].i;
 
         for (int i = 0; i< mapSize[0]; i++)
         {
@@ -82,9 +92,9 @@ public class MapManager : MonoBehaviour
     void renderMap()
     {
 
-        for (int i = 0; i < mapSize.y; i++)
+        for (int i = 0; i < mapSize[0]; i++)
         {
-            for (int j = 0; j < mapSize.x; j++)
+            for (int j = 0; j < mapSize[1]; j++)
             {
                 Vector3Int _pos = new Vector3Int(j, i, LAYER_CELL);
                 Cell C = getCell(V3_V2(_pos));
