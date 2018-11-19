@@ -765,7 +765,7 @@ MonoBehaviour:
   machineSprite:
   - {fileID: 21300000, guid: 460f4ccc1d7ad44b29fd2a52b7ab2297, type: 3}
   - {fileID: 21300000, guid: a93e70ca6d39a4dceaaff0c60a6cb340, type: 3}
-  Data: {fileID: 4900000, guid: 898025abae2da4e01a5d7752ea2b9215, type: 3}
+  Data: {fileID: 4900000, guid: c2ea1efd8638569439e81cdfd780cb4b, type: 3}
   StartPoint: {x: 3, y: 0}
   EndPoint: {x: 3, y: 19}
 --- !u!1 &1629434407
